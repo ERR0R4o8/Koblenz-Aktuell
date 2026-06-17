@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koblenz Aktuell | Unabhängiger Lokaljournalismus</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #00ff66;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --border-color: #30363d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .hero-section {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-section p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .article-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--accent-color);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .meta .author {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .article-title {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .article-snippet {
+            color: var(--text-main);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .source-tag {
+            font-size: 0.75rem;
+            background-color: rgba(0, 255, 102, 0.1);
+            color: var(--accent-color);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            align-self: flex-start;
+        }
+
+        .archive-button-container {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .btn-archive {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 1px solid var(--accent-color);
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .btn-archive:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 1rem;
+            margin-top: 5rem;
+        }
+
+        .footer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-container {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .footer-about h3, .impressum h3 {
+            color: #ffffff;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-about p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .impressum p {
+            color: var(--text-main);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">KOBLENZ<span>.AKTUELL</span></a>
+            <nav>
+                <a href="archiv.html">Archiv</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <h1>Nachrichten für Koblenz</h1>
+            <p>Aktuelle Meldungen, Hintergründe und Berichte aus der Region – unabhängig und direkt.</p>
+        </section>
+
+        <div class="grid">
+<!-- Artikel 1 (Dein neuer Artikel) -->
+            <article class="article-card">
+                <div class="card-content">
+                    <div class="meta">
+                        <span>17. Juni 2026</span>
+                        <span>•</span>
+                        <span class="author">Von Error</span>
+                    </div>
+                    <h2 class="article-title">Kultur am Eck: „Fête de la Musique“ verwandelt Koblenzer Altstadt in Großbühne</h2>
+                    <p class="article-snippet">
+                        Am kommenden Sonntag, den 21. Juni, feiert Koblenz die renommierte „Fête de la Musique“. Das im Jahr 1982 in Frankreich entstandene Kulturevent, an dem sich mittlerweile weltweit über 1.000 Städte beteiligen, verwandelt die Region auch in diesem Jahr in eine weitläufige Konzertbühne. Zwischen 15:00 und 21:00 Uhr präsentieren sich mehr als 50 regionale Musikgruppen, Chöre, Ensembles sowie Solokünstler*innen dem Publikum. Das Angebot deckt ein breites Spektrum verschiedener Genres ab.<br><br>
+                        Besonderes Merkmal des Festivals bleibt die uneingeschränkte Zugänglichkeit: Das gesamte Programm ist sowohl für die teilnehmenden Musiker als auch für die Besucher komplett kostenfrei. Als Spielstätten dienen in diesem Jahr zentrale Plätze und Kultureinrichtungen der Stadt, darunter der Jesuitenplatz, der Platz Am Plan, der Münzplatz, der Platz An der Liebfrauenkirche, der Brunnenhof Königspfalz, der Lichthof der Hochschule für Gesellschaftsgestaltung, das Peter-Friedhofen-Haus, die Rockbar Florinsmarkt sowie die Galerie No. 23 im Altengraben. Nicht nur in der Altstadt erklingt Musik: Auch in Ehrenbreitstein ist die Fête de la Musique zu Gast in der Pallottinerkapelle der Schlaraffenburg.
+                    </p>
+                    <span class="source-tag">Quelle: Stadt Koblenz</span>
+                </div>
+            </article>
+
+            <!-- Artikel 2 -->
+            <article class="article-card">
+                <div class="card-content">
+                    <div class="meta">
+                        <span>17. Juni 2026</span>
+                        <span>•</span>
+                        <span class="author">Von Error</span>
+                    </div>
+                    <h2 class="article-title">Freizeitangebot der Stadt: Sozialamt organisiert Schifffahrt für Koblenzer Senioren und seniorinnen</h2>
+                    <p class="article-snippet">
+                        Das Koblenzer Sozialamt veranstaltet am Freitag, den 31. Juli, eine eintägige Schiffstour für ältere Mitbürger*innen der Region. Die Route führt in Kooperation mit der Gilles Personenschifffahrt über den Rhein bis nach Boppard, wo den Teilnehmenden Zeit für eine eigenständige Stadterkundung zur Verfügung steht. Das Schiff legt um 11:00 Uhr (Einlass ab 10:30 Uhr) am Anleger 9 in der Nähe des Pegelhauses am Konrad-Adenauer-Ufer ab. Die Rückkehr ist gegen 17:30 Uhr geplant.<br><br>
+                        Die regulären Kosten für die Teilnahme betragen 10 Euro pro Person, wobei ein Mittagessen bereits im Fahrpreis inbegriffen ist. Inhaber*innen des KoblenzPasses erhalten eine Ermäßigung und zahlen 8 Euro. Voraussetzung für die Fahrt ist die Fähigkeit, selbstständig gehen zu können. Personen, die auf Gehhilfen angewiesen sind, benötigen eine entsprechende Begleitperson, für die die reguläre Gebühr anfällt. Tickets sind seit dem 15. Juni täglich zwischen 10:00 und 18:00 Uhr am Schalter der Tourist-Information im Forum Confluentes auf dem Zentralplatz erhältlich. Eine vorherige Reservierung oder nachträgliche Rücknahme der Karten ist ausgeschlossen.
+                    </p>
+                    <span class="source-tag">Quelle: Sozialamt Koblenz / Tourist-Information</span>
+                </div>
+            </article>
+        </div>
+        </div>
+
+        <div class="archive-button-container">
+            <a href="archiv.html" class="btn-archive">Ältere Beiträge im Archiv lesen</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>Über Koblenz Aktuell</h3>
+                <p>Dieses Angebot versteht sich als freies, unabhängiges Informationsportal für die Stadt Koblenz und Umgebung. Die Berichterstattung erfolgt rein sachbezogen, lokal und unabhängig von großen Medienhäusern.</p>
+            </div>
+            <div class="impressum">
+                <h3>Impressum</h3>
+                <p>
+                    <strong>Verantwortlich für den Inhalt:</strong><br>
+                    Benjamin Dietrich<br>
+                    Im Industriegebiet 7<br>
+                    56472 Hof<br><br>
+                    <strong>Kontakt:</strong><br>
+                    E-Mail: Dietrichbenjamin77@gmail.com
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
